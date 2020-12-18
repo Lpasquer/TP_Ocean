@@ -38,36 +38,6 @@ public class Zone {
 	}
 
 	/**
-	 * 
-	 */
-	public synchronized void Depart() {		
-		while(!occupee) {
-			try {
-				wait();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-		this.setOccupee(false);
-		System.out.println("Le requin " + Thread.currentThread().getName() +" quitte la zone ["+ligne+"]["+colonne+"], il y reste : "+nbSardines+" sardines(s).");
-	}
-
-	/**
-	 * 
-	 */
-	public synchronized void Arrivee() {
-		while(occupee) {
-			try {
-				wait();				
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-		this.setOccupee(true);
-		System.out.println("Le requin " + Thread.currentThread().getName() +" arrive dans la zone ["+ligne+"]["+colonne+"], il y a : "+nbSardines+" sardines(s).");
-	}
-
-	/**
 	 * Affiche l'etat de la zone
 	 */
 	public void afficher() {
@@ -120,7 +90,6 @@ public class Zone {
 	 */
 	static public void main(String[] args) {
 		principale();
-
 	}
 
 }

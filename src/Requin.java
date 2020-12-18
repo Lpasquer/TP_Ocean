@@ -7,23 +7,31 @@ import java.util.Random;
  * puis il attend un certain temps avant de repartir.
  */
 public class Requin extends Thread {
-	
-	static final int NB_CYCLES = 5;
-	/**
-	 * La zone de depart du requin
-	 */
-	private Zone actuelle;
 	/**
 	 * le nombre de cycle de vie du requin
 	 */
+	static final int NB_CYCLES = 5;
+	/**
+	 * L'ocean dans lequel se trouve le requin
+	 */
+	private Ocean ocean;
+	/**
+	 * La zone de depart du requin
+	 */
+	private Zone zone;
+	/**
+	 * le nombre de cycle restant au requin
+	 */
 	private int cycle;
+
 	/**
      * Construit un objet instance de Requin
      * @param depart La zone de depart du requin
      * @param suivante La zone suivante du requin
      */
-	public Requin(Zone actuelle) {
-		this.actuelle = actuelle;
+	public Requin(Ocean ocean, Zone zone) {
+		this.ocean = ocean;
+		this.zone = zone;
 		this.cycle = NB_CYCLES;
 	}
 	
@@ -32,47 +40,34 @@ public class Requin extends Thread {
 	 */
 	public void run() {
 		while(cycle > 0) {
-			actuelle.Depart();
-			
-			actuelle.Arrivee();
+			System.out.println("Le requin "+Thread.currentThread().getName()+" de la zone ["+getZone().getLigne()+"]["+getZone().getColonne()+"] se deplace, il lui reste "+cycle+" cycle(s) de vie.");
+			ocean.moveRequin(this);
+			mangerSardine();
 			try { Thread.sleep(1000);}
-			catch(InterruptedException e) {}
+			catch(InterruptedException e) {}	
+			cycle -= 1;
 		}
-	}
-	
-	public void changeDeZone() {
-		int ligne = this.actuelle.getLigne();
-		int colonne = this.actuelle.getColonne();
-		int random = Math.random()>.5?1:-1;
-		boolean gaucheDroite = Math.random()>.5;
-		if(gaucheDroite) {
-			ligne += random;
-		}
-		else {
-			colonne += random;
-		}		
+		this.getZone().setOccupee(false);
+		System.out.println("Le requin "+Thread.currentThread().getName()+" est arrivé à la fin de son cycle, il disparaît de l'ocean");
 		
-		/* on test si on n'est pas sorti de l'ocean */
-		if(ligne == -1) {
-			actuelle.setLigne(ligne + Ocean.TAILLE_OCEAN);
-		}
-		else if(ligne == Ocean.TAILLE_OCEAN) {
-			actuelle.setLigne(0);
-		}
-		else {
-			actuelle.setLigne(ligne);
-		}
-		if(colonne == -1) {
-			actuelle.setColonne(colonne + Ocean.TAILLE_OCEAN);
-		}
-		else if(colonne == Ocean.TAILLE_OCEAN) {
-			actuelle.setColonne(0);
-		}
-		else {
-			actuelle.setColonne(colonne);
+	}
+	public void mangerSardine() {
+		int nbSardines = this.getZone().getnbSardines();
+		Random r = new Random();
+		int faim = r.nextInt(3) + 1;
+		if(nbSardines > faim ) {
+			System.out.println("Le requin "+Thread.currentThread().getName()+" mange "+faim+" sardine(s)");
+			this.getZone().setnbSardines(nbSardines - faim);
+			System.out.println("Il reste "+getZone().getnbSardines()+" sardines dans la zone ["+getZone().getLigne()+"]["+getZone().getColonne()+"]");			
 		}
 	}
-	
+		
+	public Zone getZone() {
+		return zone;
+	}
+	public void setZone(Zone zone) {
+		this.zone = zone;
+	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
