@@ -3,7 +3,7 @@ import java.util.Random;
 public class Ocean {
 
 	/* Constantes */
-
+	
 	static final int TAILLE_OCEAN = 4;
 	static final int NB_REQUINS = 5;
 	static final int NB_MAX_SARDINES = 15;
@@ -11,7 +11,7 @@ public class Ocean {
 	static final int CASES_POISSONS_PILOTES = 2*TAILLE_OCEAN;
 
 	/* Attributs */
-
+	
 	private Zone[][] zones = new Zone[TAILLE_OCEAN][TAILLE_OCEAN];
 	private Requin[] requins = new Requin[NB_REQUINS];
 	private PoissonPilote[] poissonsPilotes = new PoissonPilote[NB_POISSONS_PILOTES_MAX];
