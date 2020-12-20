@@ -6,5 +6,32 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="C:/Users/Leo/.m2/repository/org/restlet/jse/org.restlet/2.1.1/org.restlet-2.1.1.jar" sourcepath="C:/Users/Leo/.m2/repository/org/restlet/jse/org.restlet/2.1.1/org.restlet-2.1.1-sources.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.groupId" value="org.restlet.jse"/>
+			<attribute name="maven.artifactId" value="org.restlet"/>
+			<attribute name="maven.version" value="2.1.1"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Leo/.m2/repository/org/restlet/jse/org.restlet.lib.org.json/2.0/org.restlet.lib.org.json-2.0.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.groupId" value="org.restlet.jse"/>
+			<attribute name="maven.artifactId" value="org.restlet.lib.org.json"/>
+			<attribute name="maven.version" value="2.0"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Leo/.m2/repository/org/restlet/jse/org.restlet.ext.json/2.1.1/org.restlet.ext.json-2.1.1.jar" sourcepath="C:/Users/Leo/.m2/repository/org/restlet/jse/org.restlet.ext.json/2.1.1/org.restlet.ext.json-2.1.1-sources.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.groupId" value="org.restlet.jse"/>
+			<attribute name="maven.artifactId" value="org.restlet.ext.json"/>
+			<attribute name="maven.version" value="2.1.1"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

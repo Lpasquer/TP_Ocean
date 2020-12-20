@@ -1,3 +1,5 @@
+package org.inria.restlet.mta.backend;
+
 /**
  * Les objets instances de la classe Zone representent une zone de l'ocean. Il
  * n'est pas possible que deux requins soient dans une zone en meme temps.
@@ -18,11 +20,13 @@ public class Zone {
 	/**
 	 * Est vrai si un requin se trouve dans la zone
 	 */
-	private boolean occupee; // ?
+	private boolean occupee;
 	/**
 	 * Nombre de poissons pilotes dans la zone
 	 */
 	private int nbPoissonsPilotes;
+	
+	private Requin requin;
 
 	/**
 	 * Cree un nouvel objet instance de Zone
@@ -36,7 +40,7 @@ public class Zone {
 		this.colonne = colonne;
 		this.nbSardines = nombreSardines;
 		this.occupee = false;
-		this.nbPoissonsPilotes = nbPoissonsPilotes;
+		this.requin = null;
 	}
 
 	/**
@@ -44,11 +48,9 @@ public class Zone {
 	 */
 	public void afficher() {
 		if (!occupee) {
-			System.out.println(
-					"La zone [" + ligne + "][" + colonne + "] est libre, elle contient " + nbSardines + " sardine(s).");
+			System.out.println("La zone ["+ligne+"]["+colonne+"] est libre, elle contient "+nbSardines+" sardine(s) et "+nbPoissonsPilotes+" poisson(s) pilote.");
 		} else {
-			System.out.println("La zone [" + ligne + "][" + colonne + "] est occupee, elle contient " + nbSardines
-					+ " sardine(s).");
+			System.out.println("La zone ["+ligne+"]["+colonne+"] est occupee, elle contient "+nbSardines+" sardine(s) et "+nbPoissonsPilotes+" poisson(s) pilote.");
 		}
 	}
 
@@ -90,6 +92,14 @@ public class Zone {
 
 	public void setOccupee(boolean occupee) {
 		this.occupee = occupee;
+	}
+
+	public Requin getRequin() {
+		return requin;
+	}
+
+	public void setRequin(Requin requin) {
+		this.requin = requin;
 	}
 
 	/**
